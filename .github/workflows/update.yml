@@ -22,16 +22,16 @@ jobs:
         run: |
           IPS="${{ steps.get_ips.outputs.ips }}"
           IFS=$'\n'
-          echo "" > sbu.txt
+          echo "" > sub.txt # 清空 sub.txt
           for IP in $IPS; do
              LINK="vless://feefeb96-bfcf-4a9b-aac0-6aac771c1b98@${IP}:443?encryption=none&security=tls&sni=pages.seaw.us.kg&fp=random&type=ws&host=pages.seaw.us.kg#US_6"
-             echo "$LINK" >> sbu.txt
+             echo "$LINK" >> sub.txt
           done
 
       - name: Commit changes
         run: |
           git config --global user.name "GitHub Actions Bot"
           git config --global user.email "actions@github.com"
-          git add sbu.txt
+          git add sub.txt
           git commit -m "Update subscription links" || echo "No changes to commit"
           git push origin main
