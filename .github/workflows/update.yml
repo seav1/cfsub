@@ -1,0 +1,42 @@
+name: Update Subscription Links
+
+on:
+  workflow_dispatch:  # 允许手动触发 workflow
+  schedule:
+    - cron: '0 0 * * *'  # 每天 UTC 0 点执行
+
+jobs:
+  update_links:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Download ZIP File
+        run: |
+          curl -L https://zip.baipiao.eu.org -o txt.zip
+          mkdir temp_dir # 创建临时目录
+          unzip txt.zip -d temp_dir # 解压到临时目录
+          rm txt.zip
+
+      - name: Process TXT Files and Generate Links
+        run: |
+          BASE_LINK="vless://feefeb96-bfcf-4a9b-aac0-6aac771c1b98@IP地址:端口?encryption=none&security=tls&sni=pages.seaw.us.kg&fp=randomized&type=ws&host=pages.seaw.us.kg&path=%2F%3Fed%3D2048#pages.seaw.us.kg"
+          echo "" > sub.txt # 清空 sub.txt 文件
+
+          find temp_dir -maxdepth 1 -name "*.txt" -print0 | while IFS= read -r -d $'\0' file; do
+            while IFS= read -r line; do
+                if [[ "$line" =~ ^([0-9]{1,3}\.){3}[0-9]{1,3}:[0-9]+$ ]]; then
+                  NEW_LINK=$(echo "$BASE_LINK" | sed "s/IP地址:端口/$line/")
+                  echo "$NEW_LINK" >> sub.txt
+                fi
+            done < "$file"
+          done
+          
+          rm -rf temp_dir  # 删除临时目录和文件
+
+      - name: Commit and Push Changes
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: 'Update sub.txt with new links'
+          branch: ${{ github.ref }}
