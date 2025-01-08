@@ -21,7 +21,7 @@ jobs:
 
       - name: Process TXT Files and Generate Links
         run: |
-          BASE_LINK="vless://feefeb96-bfcf-4a9b-aac0-6aac771c1b98@IP:PORT?encryption=none&security=tls&sni=pages.seaw.us.kg&fp=randomized&type=ws&host=pages.seaw.us.kg&path=%2F%3Fed%3D2048#pages.seaw.us.kg"
+          BASE_LINK="vless://feefeb96-bfcf-4a9b-aac0-6aac771c1b98@IP:PORT?encryption=none&security=none&type=ws&host=pages.seaw.us.kg&path=%2F%3Fed%3D2048#pages.seaw.us.kg"
           echo "" > sub.txt
 
           find temp_dir -maxdepth 1 -name "*.txt" -print0 | while IFS= read -r -d $'\0' file; do
