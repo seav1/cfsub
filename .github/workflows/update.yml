@@ -22,23 +22,20 @@ jobs:
       - name: Process TXT Files and Generate Links
         run: |
           BASE_LINK="vless://feefeb96-bfcf-4a9b-aac0-6aac771c1b98@IP:PORT?encryption=none&security=tls&sni=pages.seaw.us.kg&fp=randomized&type=ws&host=pages.seaw.us.kg&path=%2F%3Fed%3D2048#pages.seaw.us.kg"
-          echo "" > sub.txt # 清空 sub.txt 文件
+          echo "" > sub.txt
 
           find temp_dir -maxdepth 1 -name "*.txt" -print0 | while IFS= read -r -d $'\0' file; do
-            echo "Processing file: $file"
-            while IFS= read -r line; do
-                line=$(echo "$line" | sed 's/^[ \t]*//;s/[ \t]*$//')  # 去除前导和尾随空格
-                echo "  Raw Line: '$line'"
-
-                if [[ "$line" =~ ^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5]):([0-9]{1,5})$ ]]; then
-                    echo "    Match Found: '$line'"
-                    NEW_LINK=$(echo "$BASE_LINK" | sed "s/IP:PORT/$line/")
-                    echo "$NEW_LINK" >> sub.txt
-                    echo "    New link added"
-                  else
-                    echo "    No Match: '$line'"
-                fi
-            done < "$file"
+             echo "Processing file: $file"
+             cat "$file" | while IFS= read -r line; do
+                 line=$(echo "$line" | sed 's/^[ \t]*//;s/[ \t]*$//')
+                 if [[ "$line" =~ ^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5]):([0-9]{1,5})$ ]]; then
+                     echo "    Match Found: '$line'"
+                     NEW_LINK=$(echo "$BASE_LINK" | sed "s/IP:PORT/$line/")
+                     echo "$NEW_LINK" >> sub.txt
+                 else
+                     echo "    No Match: '$line'"
+                 fi
+            done
           done
           rm -rf temp_dir
       - name: Commit and Push Changes
