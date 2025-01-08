@@ -21,12 +21,11 @@ jobs:
       - name: Generate subscription links
         run: |
           IPS="${{ steps.get_ips.outputs.ips }}"
-          IFS=$'\n'
           echo "" > sub.txt
-          for IP in $IPS; do
-             LINK="vless://feefeb96-bfcf-4a9b-aac0-6aac771c1b98@${IP}:443?encryption=none&security=tls&sni=pages.seaw.us.kg&fp=random&type=ws&host=pages.seaw.us.kg#US_6"
-             echo "$LINK" >> sub.txt
-          done
+          while IFS= read -r IP; do
+            LINK="vless://feefeb96-bfcf-4a9b-aac0-6aac771c1b98@${IP}:443?encryption=none&security=tls&sni=pages.seaw.us.kg&fp=random&type=ws&host=pages.seaw.us.kg#US_6"
+            echo "$LINK" >> sub.txt
+          done <<< "$IPS"
 
       - name: Commit changes
         run: |
