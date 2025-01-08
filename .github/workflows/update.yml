@@ -22,15 +22,15 @@ jobs:
         run: |
           IPS="${{ steps.get_ips.outputs.ips }}"
           echo "" > sub.txt
-          while IFS= read -r -d $'\n' IP; do
+          IFS=$'\n'
+          for IP in $IPS; do
             # 去除 IP 地址末尾的任何额外空格或回车符
             IP=$(echo "$IP" | xargs)
             if [[ -n "$IP" ]]; then # 确保 IP 不为空
               LINK="vless://feefeb96-bfcf-4a9b-aac0-6aac771c1b98@${IP}:443?encryption=none&security=tls&sni=pages.seaw.us.kg&fp=random&type=ws&host=pages.seaw.us.kg#US_6"
               echo "$LINK" >> sub.txt
             fi
-          done <<< "$IPS"
-
+          done
 
       - name: Commit changes
         run: |
