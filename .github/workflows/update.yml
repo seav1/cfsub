@@ -24,7 +24,7 @@ jobs:
         wget https://raw.githubusercontent.com/ymyuuu/IPDB/main/bestcf.txt -O ips.txt
         
         # Create base string for the link
-        BASE_LINK="vless://feefeb96-bfcf-4a9b-aac0-6aac771c1b98@IP:443?encryption=none&security=tls&sni=pages.seaw.us.kg&fp=random&type=ws&host=pages.seaw.us.kg#pages"
+        BASE_LINK="vless://feefeb96-bfcf-4a9b-aac0-6aac771c1b98@IP:443?encryption=none&security=tls&sni=pages.seaw.tk&fp=random&type=ws&host=pages.seaw.tk#pages"
         
         # Create new subscription file
         > sub.txt
