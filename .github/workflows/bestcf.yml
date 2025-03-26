@@ -1,4 +1,4 @@
-name: Generate Subscription Links
+name: bestcf
 
 on:
   schedule:
