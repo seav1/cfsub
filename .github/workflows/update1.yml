@@ -42,6 +42,6 @@ jobs:
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
-        git add sub.txt
+        git add sub1.txt
         git commit -m "Update subscription links" || exit 0
         git push
