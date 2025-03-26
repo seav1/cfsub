@@ -27,7 +27,7 @@ jobs:
         BASE_LINK="vless://feefeb96-bfcf-4a9b-aac0-6aac771c1b98@IP:443?encryption=none&security=tls&sni=pages.seaw.tk&fp=random&type=ws&host=pages.seaw.tk#pages"
         
         # Create new subscription file
-        > sub.txt
+        > sub1.txt
         
         # Read each IP and generate link
         while IFS= read -r ip; do
