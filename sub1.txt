@@ -1,7 +1,7 @@
-vless://feefeb96-bfcf-4a9b-aac0-6aac771c1b98@129.151.225.228:443?encryption=none&security=tls&sni=pages.seaw.tk&fp=random&type=ws&host=pages.seaw.tk#pages
-vless://feefeb96-bfcf-4a9b-aac0-6aac771c1b98@8.220.135.63:443?encryption=none&security=tls&sni=pages.seaw.tk&fp=random&type=ws&host=pages.seaw.tk#pages
+vless://feefeb96-bfcf-4a9b-aac0-6aac771c1b98@8.218.71.200:443?encryption=none&security=tls&sni=pages.seaw.tk&fp=random&type=ws&host=pages.seaw.tk#pages
 vless://feefeb96-bfcf-4a9b-aac0-6aac771c1b98@8.209.45.211:443?encryption=none&security=tls&sni=pages.seaw.tk&fp=random&type=ws&host=pages.seaw.tk#pages
-vless://feefeb96-bfcf-4a9b-aac0-6aac771c1b98@8.220.135.231:443?encryption=none&security=tls&sni=pages.seaw.tk&fp=random&type=ws&host=pages.seaw.tk#pages
-vless://feefeb96-bfcf-4a9b-aac0-6aac771c1b98@147.139.181.165:443?encryption=none&security=tls&sni=pages.seaw.tk&fp=random&type=ws&host=pages.seaw.tk#pages
 vless://feefeb96-bfcf-4a9b-aac0-6aac771c1b98@47.74.155.26:443?encryption=none&security=tls&sni=pages.seaw.tk&fp=random&type=ws&host=pages.seaw.tk#pages
+vless://feefeb96-bfcf-4a9b-aac0-6aac771c1b98@8.209.45.47:443?encryption=none&security=tls&sni=pages.seaw.tk&fp=random&type=ws&host=pages.seaw.tk#pages
+vless://feefeb96-bfcf-4a9b-aac0-6aac771c1b98@147.139.181.165:443?encryption=none&security=tls&sni=pages.seaw.tk&fp=random&type=ws&host=pages.seaw.tk#pages
+vless://feefeb96-bfcf-4a9b-aac0-6aac771c1b98@129.151.225.228:443?encryption=none&security=tls&sni=pages.seaw.tk&fp=random&type=ws&host=pages.seaw.tk#pages
 vless://feefeb96-bfcf-4a9b-aac0-6aac771c1b98@164.152.34.166:443?encryption=none&security=tls&sni=pages.seaw.tk&fp=random&type=ws&host=pages.seaw.tk#pages
