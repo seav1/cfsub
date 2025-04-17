@@ -1,0 +1,47 @@
+name: bestcfv6
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # Run at 00:00 UTC every day
+  workflow_dispatch:      # Allow manual trigger
+  
+jobs:
+  generate-links:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.x'
+        
+    - name: Generate subscription links
+      run: |
+        # Download and extract IPs
+        wget https://raw.githubusercontent.com/ymyuuu/IPDB/main/BestCF/bestcfv6.txt -O ips.txt
+        
+        # Create base string for the link
+        BASE_LINK="vless://feefeb96-bfcf-4a9b-aac0-6aac771c1b98@IP:443?encryption=none&security=tls&sni=pages.seaw.tk&fp=random&type=ws&host=pages.seaw.tk#pages"
+        
+        # Create new subscription file
+        > subv6.txt
+        
+        # Read each IP and generate link
+        while IFS= read -r ip; do
+          # Skip empty lines
+          [ -z "$ip" ] && continue
+          
+          # Replace IP in base link and append to subv6.txt
+          echo "${BASE_LINK/IP/$ip}" >> subv6.txt
+        done < ips.txt
+        
+    - name: Commit and push if changes
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add subv6.txt
+        git commit -m "Update best cf" || exit 0
+        git push
