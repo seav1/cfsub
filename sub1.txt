@@ -1,2 +1,1 @@
 vless://feefeb96-bfcf-4a9b-aac0-6aac771c1b98@143.47.179.237:443?encryption=none&security=tls&sni=pages.seaw.tk&fp=random&type=ws&host=pages.seaw.tk#pages
-vless://feefeb96-bfcf-4a9b-aac0-6aac771c1b98@47.74.157.194:443?encryption=none&security=tls&sni=pages.seaw.tk&fp=random&type=ws&host=pages.seaw.tk#pages
